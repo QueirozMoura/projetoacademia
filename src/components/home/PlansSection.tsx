@@ -70,7 +70,7 @@ export function PlansSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
@@ -78,9 +78,9 @@ export function PlansSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative rounded-2xl p-8 ${
+              className={`relative rounded-2xl p-8 flex flex-col ${
                 plan.popular
-                  ? 'bg-primary text-primary-foreground scale-105 glow-orange'
+                  ? 'bg-primary text-primary-foreground md:-my-4 md:py-12 glow-orange'
                   : 'bg-card text-card-foreground border border-border'
               }`}
             >
@@ -108,11 +108,11 @@ export function PlansSection() {
                 </div>
               </div>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 flex-grow">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <div
-                      className={`w-5 h-5 rounded-full flex items-center justify-center ${
+                      className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
                         plan.popular ? 'bg-primary-foreground/20' : 'bg-primary/10'
                       }`}
                     >
@@ -125,7 +125,7 @@ export function PlansSection() {
                 ))}
               </ul>
 
-              <Link to="/matricula">
+              <Link to="/matricula" className="mt-auto">
                 <Button
                   variant={plan.popular ? 'hero-outline' : 'default'}
                   className="w-full"
